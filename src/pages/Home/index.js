@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import { Link } from 'react-router-dom';
+import './home.css'
 class App extends Component{
 
   constructor(props){
@@ -29,8 +30,21 @@ class App extends Component{
 
   render(){
     return(
-      <div>
-         
+      <div className="container">
+          <div className="lista-filmes">
+              {
+                this.state.filmes.map((item) =>{
+                  return(
+                    <article key={item.id} className="filme">
+                        <strong>{item.nome} </strong>
+                        <img src={item.foto}/>
+                        <Link exact to="/">Acessar</Link>
+                        
+                    </article>
+                  );
+                })
+              }
+          </div>
       </div>
     );
   }
