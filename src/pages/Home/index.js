@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import './home.css'
-class App extends Component{
+class Home extends Component{
 
   constructor(props){
     super(props);
@@ -21,8 +21,8 @@ class App extends Component{
     let url = 'https://sujeitoprogramador.com/r-api/?api=filmes'
 
     fetch(url)
-    .then((r)=> r.json())
-    .then((json) =>{
+    .then((r) => r.json())
+    .then((json) => {
         this.setState({filmes: json});
         console.log(json);
     });
@@ -33,12 +33,12 @@ class App extends Component{
       <div className="container">
           <div className="lista-filmes">
               {
-                this.state.filmes.map((item) =>{
+                this.state.filmes.map((filme) =>{
                   return(
-                    <article key={item.id} className="filme">
-                        <strong>{item.nome} </strong>
-                        <img src={item.foto}/>
-                        <Link exact to="/">Acessar</Link>
+                    <article key={filme.id} className="filme">
+                        <strong>{filme.nome} </strong>
+                        <img src={filme.foto} alt="Capa"/>
+                        <Link to={`filme/${filme.id}`}>Acessar</Link>
                         
                     </article>
                   );
@@ -50,4 +50,4 @@ class App extends Component{
   }
 }
 
-export default App;
+export default Home;
