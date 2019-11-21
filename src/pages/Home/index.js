@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import './home.css'
+import { Container, ListaFilmes, Filme, Acessar, NomeFilme, Capa } from './style';
 class Home extends Component{
 
   constructor(props){
@@ -30,22 +30,22 @@ class Home extends Component{
 
   render(){
     return(
-      <div className="container">
-          <div className="lista-filmes">
+      <Container>
+          <ListaFilmes>
               {
                 this.state.filmes.map((filme) =>{
                   return(
-                    <article key={filme.id} className="filme">
-                        <strong>{filme.nome} </strong>
-                        <img src={filme.foto} alt="Capa"/>
-                        <Link to={`filme/${filme.id}`}>Acessar</Link>
+                    <Filme key={filme.id} className="filme">
+                        <NomeFilme>{filme.nome} </NomeFilme>
+                        <Capa src={filme.foto} alt="Capa"/>
+                        <Acessar to={`filme/${filme.id}`}>Acessar</Acessar>
                         
-                    </article>
+                    </Filme>
                   );
                 })
               }
-          </div>
-      </div>
+          </ListaFilmes>
+      </Container>
     );
   }
 }
