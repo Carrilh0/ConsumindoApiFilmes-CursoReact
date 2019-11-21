@@ -10,6 +10,7 @@ export const Container = styled.div`
     width: 800px;
 `;
 
+
 export const ListaFilmes = styled.div`
     margin: 15px;
 `;

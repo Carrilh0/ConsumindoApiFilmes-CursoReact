@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-import { Container, ListaFilmes, Filme, Acessar, NomeFilme, Capa } from './style';
+import { Container, ListaFilmes, Filme, Acessar, NomeFilme, Capa} from './style';
+import { HashLink } from 'react-router-hash-link';
 class Home extends Component{
 
   constructor(props){
@@ -31,11 +31,22 @@ class Home extends Component{
   render(){
     return(
       <Container>
+          {
+                this.state.filmes.map((filme) =>{
+                  return(
+                    <div>
+                      
+                      <HashLink smooth to={`#${filme.nome}`} className="venom">{filme.nome}</HashLink>
+
+                    </div>
+                  );
+                })
+              }
           <ListaFilmes>
               {
                 this.state.filmes.map((filme) =>{
                   return(
-                    <Filme key={filme.id} className="filme">
+                    <Filme key={filme.id} id={filme.nome} className="filme">
                         <NomeFilme>{filme.nome} </NomeFilme>
                         <Capa src={filme.foto} alt="Capa"/>
                         <Acessar to={`filme/${filme.id}`}>Acessar</Acessar>
